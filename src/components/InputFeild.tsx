@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 interface Props {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
@@ -23,12 +25,14 @@ const InputFeild: React.FC<Props> = ({ todo, setTodo, handleAddTodo }) => {
             className="w-full h-12 bg-black text-white pl-3 rounded-l-md"
           ></input>
 
-          <button
-            type="submit"
-            className="h-12 bg-black text-white font-semibold ml-1 px-5 rounded-r-md"
-          >
-            Go
-          </button>
+          <motion.div whileTap={{ scale: 0.8 }}>
+            <button
+              type="submit"
+              className="h-12 bg-black text-white font-semibold ml-1 px-5 rounded-r-md"
+            >
+              Go
+            </button>
+          </motion.div>
         </form>
       </div>
     </div>

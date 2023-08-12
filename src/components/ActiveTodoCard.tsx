@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { BiSolidEditAlt } from "react-icons/Bi";
 import { AiFillDelete } from "react-icons/Ai";
 import { MdDone } from "react-icons/Md";
+import { motion } from "framer-motion";
 
 type Props = {
   todo: Todo;
@@ -57,28 +58,42 @@ const ActiveTodoCard: React.FC<Props> = ({
           <p className="pl-4 font-semibold">{todo.todo}</p>
         )}
 
-        <div className="flex">
-          <IconContext.Provider value={{ size: "27" }}>
-            <span
-              onClick={() => {
-                setIsEdited(!isEdited);
-              }}
-            >
-              <BiSolidEditAlt></BiSolidEditAlt>
-            </span>
-          </IconContext.Provider>
+        <div className="flex justify-center items-center">
+          <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+            <IconContext.Provider value={{ size: "27" }}>
+              <span
+                onClick={() => {
+                  setIsEdited(!isEdited);
+                }}
+              >
+                <BiSolidEditAlt></BiSolidEditAlt>
+              </span>
+            </IconContext.Provider>
+          </motion.div>
 
-          <IconContext.Provider value={{ size: "27" }}>
-            <span className="px-2" onClick={() => handleDelete(todo.id)}>
-              <AiFillDelete></AiFillDelete>
-            </span>
-          </IconContext.Provider>
+          <motion.div
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex my-auto px-2"
+          >
+            <IconContext.Provider value={{ size: "27" }}>
+              <span onClick={() => handleDelete(todo.id)}>
+                <AiFillDelete></AiFillDelete>
+              </span>
+            </IconContext.Provider>
+          </motion.div>
 
-          <IconContext.Provider value={{ size: "27" }}>
-            <span className="pr-4" onClick={() => handleDone(todo.id)}>
-              <MdDone></MdDone>
-            </span>
-          </IconContext.Provider>
+          <motion.div
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            className="pr-4"
+          >
+            <IconContext.Provider value={{ size: "27" }}>
+              <span onClick={() => handleDone(todo.id)}>
+                <MdDone></MdDone>
+              </span>
+            </IconContext.Provider>
+          </motion.div>
         </div>
       </div>
     </form>
